@@ -47,7 +47,6 @@ const Navbar = () => {
                         <MenuItem color="gray.900">Motos</MenuItem>
                     </MenuList>
                 </Menu>
-
                 <CartWidget></CartWidget>
             </Box>
         </Flex>
