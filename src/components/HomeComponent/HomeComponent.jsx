@@ -1,6 +1,6 @@
 import { Box, Image } from "@chakra-ui/react";
 
-const ItemListContainer = () => {
+const HomeComponent = () => {
     return (
         <Box w="100%">
             <Image
@@ -33,4 +33,4 @@ const ItemListContainer = () => {
     );
 };
 
-export default ItemListContainer;
+export default HomeComponent;

@@ -29,10 +29,10 @@ const Navbar = () => {
             </Box>
             <Spacer />
             <Box>
-                <Link href="#" marginRight="1rem">
+                <Link href="/home" marginRight="1rem">
                     Inicio
                 </Link>
-                <Link href="#" marginRight="1rem">
+                <Link href="/information" marginRight="1rem">
                     Informacion
                 </Link>
                 {/* Dropdown */}
@@ -42,9 +42,15 @@ const Navbar = () => {
                         Vehiculos
                     </MenuButton>
                     <MenuList>
-                        <MenuItem color="gray.900">Carros</MenuItem>
-                        <MenuItem color="gray.900">Camionetas</MenuItem>
-                        <MenuItem color="gray.900">Motos</MenuItem>
+                        <Link href="/cars">
+                            <MenuItem color="gray.900">Carros</MenuItem>
+                        </Link>
+                        <Link href="/trucks">
+                            <MenuItem color="gray.900">Camionetas</MenuItem>
+                        </Link>
+                        <Link href="/motorcycles">
+                            <MenuItem color="gray.900">Motos</MenuItem>
+                        </Link>
                     </MenuList>
                 </Menu>
                 <CartWidget />
