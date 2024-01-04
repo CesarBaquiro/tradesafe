@@ -1,18 +1,15 @@
-import { Box, SimpleGrid } from "@chakra-ui/react";
-import ProductCard from "../ProductCard/ProductCard";
+import { Grid } from "@chakra-ui/react";
+import ProductCard from "../ProductComponents/ProductCard";
+import productsData from "../ProductComponents/productsData.json";
 
 const CarsComponent = () => {
     return (
-        <Box>
-            <SimpleGrid
-                spacing={5}
-                templateColumns="repeat(auto-fill, minmax(300px, 1fr))"
-            >
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-            </SimpleGrid>
-        </Box>
+        <Grid templateColumns="repeat(5, 1fr)" gap={6}>
+            {/*----- Mapeamos los productos de la categoria seccion cars ------*/}
+            {productsData.cars.map((product) => (
+                <ProductCard key={product.id} product={product} />
+            ))}
+        </Grid>
     );
 };
 

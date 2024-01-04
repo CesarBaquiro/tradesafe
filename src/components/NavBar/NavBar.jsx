@@ -22,11 +22,13 @@ const Navbar = () => {
             bg="gray.900"
             color="white"
         >
-            <Box>
-                <Heading as="h1" size="md">
-                    TradeSafe
-                </Heading>
-            </Box>
+            <Link href="/">
+                <Box>
+                    <Heading as="h1" size="md">
+                        TradeSafe
+                    </Heading>
+                </Box>
+            </Link>
             <Spacer />
             <Box>
                 <Link href="/home" marginRight="1rem">
@@ -42,13 +44,13 @@ const Navbar = () => {
                         Vehiculos
                     </MenuButton>
                     <MenuList>
-                        <Link href="/cars">
+                        <Link href="/vehicles/cars">
                             <MenuItem color="gray.900">Carros</MenuItem>
                         </Link>
-                        <Link href="/trucks">
+                        <Link href="/vehicles/trucks">
                             <MenuItem color="gray.900">Camionetas</MenuItem>
                         </Link>
-                        <Link href="/motorcycles">
+                        <Link href="/vehicles/motorcycles">
                             <MenuItem color="gray.900">Motos</MenuItem>
                         </Link>
                     </MenuList>
