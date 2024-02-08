@@ -1,9 +1,6 @@
 /* eslint-disable react/prop-types */
-//import { useState } from "react";
 
-import productsData from "./productsData.json";
 import { Link } from "react-router-dom";
-
 import {
     Heading,
     Image,
@@ -16,14 +13,22 @@ import {
     ButtonGroup,
     Button,
 } from "@chakra-ui/react";
+import { useCart } from "../CartComponent/CartContext"; // Ruta correcta al archivo CartContext
 
-const ProductCard = ({ product }) => {
+const ItemList = ({ product }) => {
+    const { addToCart } = useCart();
+
+    const onAddProduct = () => {
+        addToCart(product);
+        console.log("Producto agregado al carrito:", product);
+    };
+
     return (
         <Card key={product.id} maxW="sm">
             <CardBody>
                 <Image
                     src={product.image}
-                    alt={productsData.name}
+                    alt={product.name}
                     borderRadius="lg"
                 />
                 <Stack mt="6" spacing="3">
@@ -37,7 +42,11 @@ const ProductCard = ({ product }) => {
             <Divider />
             <CardFooter>
                 <ButtonGroup spacing="2">
-                    <Button variant="solid" colorScheme="blue">
+                    <Button
+                        variant="solid"
+                        colorScheme="blue"
+                        onClick={onAddProduct}
+                    >
                         Add to cart
                     </Button>
                     <Link to={`/vehicles/cars/${product.id}`}>
@@ -51,4 +60,4 @@ const ProductCard = ({ product }) => {
     );
 };
 
-export default ProductCard;
+export default ItemList;

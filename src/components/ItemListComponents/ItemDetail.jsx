@@ -11,7 +11,7 @@ import {
 import productsData from "./productsData.json";
 import { useParams } from "react-router-dom";
 
-const DetailsComponent = () => {
+const ItemDetail = () => {
     const { id } = useParams();
 
     // Encontrar el producto con el ID
@@ -66,4 +66,4 @@ const DetailsComponent = () => {
     );
 };
 
-export default DetailsComponent;
+export default ItemDetail;
