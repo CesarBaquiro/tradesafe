@@ -16,11 +16,10 @@ import {
 import { useCart } from "../CartComponent/CartContext"; // Ruta correcta al archivo CartContext
 
 const ItemList = ({ product }) => {
-    const { addToCart } = useCart();
+    const { dispatch } = useCart();
 
     const onAddProduct = () => {
-        addToCart(product);
-        console.log("Producto agregado al carrito:", product);
+        dispatch({ type: "ADD_TO_CART", payload: product });
     };
 
     return (
@@ -47,11 +46,11 @@ const ItemList = ({ product }) => {
                         colorScheme="blue"
                         onClick={onAddProduct}
                     >
-                        Add to cart
+                        Agregar
                     </Button>
                     <Link to={`/vehicles/cars/${product.id}`}>
                         <Button variant="solid" colorScheme="blue">
-                            See Details
+                            Ver detalles
                         </Button>
                     </Link>
                 </ButtonGroup>

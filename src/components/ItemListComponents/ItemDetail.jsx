@@ -1,5 +1,4 @@
 import {
-    Button,
     Card,
     Image,
     Stack,
@@ -7,9 +6,12 @@ import {
     Heading,
     Text,
     CardFooter,
+    UnorderedList,
+    ListItem,
 } from "@chakra-ui/react";
-import productsData from "./productsData.json";
 import { useParams } from "react-router-dom";
+import Product from "../CartComponent/Product";
+import productsData from "./productsData.json";
 
 const ItemDetail = () => {
     const { id } = useParams();
@@ -35,30 +37,26 @@ const ItemDetail = () => {
                 <Image
                     objectFit="cover"
                     maxW={{ base: "100%", sm: "400px" }}
-                    src={selectedProduct.image} // Usar la imagen del producto
-                    alt={selectedProduct.name} // Usar el nombre del producto como alt
+                    src={selectedProduct.image}
+                    alt={selectedProduct.name}
                 />
 
                 <Stack>
                     <CardBody>
                         <Heading size="md">{selectedProduct.name}</Heading>
                         <Text py="2">${selectedProduct.price}</Text>
+                        <UnorderedList>
+                            {selectedProduct.specifications.map(
+                                (spec, index) => (
+                                    <ListItem key={index}>{spec}</ListItem>
+                                )
+                            )}
+                        </UnorderedList>
                         <Text py="2">{selectedProduct.shortDescription}</Text>
-                        <Text>
-                            <ul>
-                                {selectedProduct.specifications.map(
-                                    (spec, index) => (
-                                        <li key={index}>{spec}</li>
-                                    )
-                                )}
-                            </ul>
-                        </Text>
                     </CardBody>
 
                     <CardFooter>
-                        <Button variant="solid" colorScheme="blue">
-                            Buy
-                        </Button>
+                        <Product product={selectedProduct} />
                     </CardFooter>
                 </Stack>
             </Card>

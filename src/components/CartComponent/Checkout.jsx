@@ -1,17 +1,44 @@
-import { useCart } from "./CartContext";
-import CartItemCard from "./CartItemCard";
-
+import { CartProvider } from "./CartContext";
+import ShoppingCart from "./ShoppingCart";
+import { useCart } from "../CartComponent/CartContext";
+import { VStack, Text, Button, Center } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 const Checkout = () => {
-    const { cart } = useCart();
-    console.log("Productos en el carrito:", cart);
+    const { cartState } = useCart();
+    const cartIsEmpty = cartState.items.length === 0;
+    const navigate = useNavigate();
+
+    const handleVerMasProductos = () => {
+        // Redirige a la ruta "home"
+        navigate("/");
+    };
 
     return (
-        <div>
-            <h1>Shopping Cart</h1>
-            {cart.map((product) => (
-                <CartItemCard key={product.id} product={product} />
-            ))}
-        </div>
+        <CartProvider>
+            <VStack align="center" spacing="100">
+                <Text fontSize="5xl" fontWeight="bold" textAlign="center">
+                    Carrito de Compras
+                </Text>
+                <Center>
+                    {cartIsEmpty ? (
+                        <VStack align="center" spacing="100">
+                            <Text textAlign="center">
+                                Tu carrito está vacío. ¡Explora nuestra tienda y
+                                agrega algunos productos!
+                            </Text>
+                            <Button
+                                colorScheme="blue"
+                                onClick={handleVerMasProductos}
+                            >
+                                Ver más productos
+                            </Button>
+                        </VStack>
+                    ) : (
+                        <ShoppingCart />
+                    )}
+                </Center>
+            </VStack>
+        </CartProvider>
     );
 };
 
