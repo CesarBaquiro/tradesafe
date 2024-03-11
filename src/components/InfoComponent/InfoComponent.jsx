@@ -1,5 +1,11 @@
+// InfoComponent.jsx
+
 const InfoComponent = () => {
-    return <div>Hola info</div>;
+    return (
+        <>
+            <h1>Hola info</h1>
+        </>
+    );
 };
 
 export default InfoComponent;

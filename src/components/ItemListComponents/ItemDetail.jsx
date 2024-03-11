@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+import React from "react";
+
 import {
     Card,
     Image,
@@ -10,20 +13,37 @@ import {
     ListItem,
 } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
+import { collection, doc, getDoc, getFirestore } from "firebase/firestore";
 import Product from "../CartComponent/Product";
-import productsData from "./productsData.json";
 
 const ItemDetail = () => {
     const { id } = useParams();
+    const [selectedProduct, setSelectedProduct] = React.useState(null);
 
-    // Encontrar el producto con el ID
-    const selectedProduct = productsData.cars.find(
-        (product) => product.id === parseInt(id)
-    );
+    // Obtener datos del producto desde Firebase
+    React.useEffect(() => {
+        const fetchProduct = async () => {
+            try {
+                const db = getFirestore();
+                const productDocRef = doc(db, "cars", id);
+                const productDocSnap = await getDoc(productDocRef);
+
+                if (productDocSnap.exists()) {
+                    setSelectedProduct(productDocSnap.data());
+                } else {
+                    console.log("No existe ese documento!");
+                }
+            } catch (error) {
+                console.error("Error al recuperar el producto:", error);
+            }
+        };
+
+        fetchProduct();
+    }, [id]);
 
     // Verificar si el producto se encontró o no
     if (!selectedProduct) {
-        return <div>Product not found</div>;
+        return <div>Loading...</div>;
     }
 
     // Mostrar los detalles del producto
@@ -44,6 +64,7 @@ const ItemDetail = () => {
                 <Stack>
                     <CardBody>
                         <Heading size="md">{selectedProduct.name}</Heading>
+
                         <Text py="2">${selectedProduct.price}</Text>
                         <UnorderedList>
                             {selectedProduct.specifications.map(
