@@ -1,6 +1,6 @@
 # Tradesafe
 
-Tienda de productos y servicios deportivos
+Online vehicle store
 
 ## Tabla de contenidos
 
@@ -14,7 +14,7 @@ Tienda de productos y servicios deportivos
 
 Starting screen
 
-![Starting screen](./src/assets/md/InicioPreview.png)
+![Starting screen](./src/assets/md/homePreview.png)
 
 ## Informacíon
 
@@ -33,6 +33,9 @@ Vehicle categories
 ## Cart
 
 shopping cart
+
+![Cart empty desktop](./src/assets/md/cartEmptyPreview.png)
+![Cart desktop](./src/assets/md/cartPreview.png)
 
 ## Authors
 
