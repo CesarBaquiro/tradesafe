@@ -32,7 +32,7 @@ const ShoppingCart = () => {
                             <Image
                                 boxSize="80px"
                                 objectFit="cover"
-                                src={item.image} // Asegúrate de tener la propiedad image en tu objeto de producto
+                                src={item.image}
                                 alt={item.name}
                                 borderRadius="md"
                             />

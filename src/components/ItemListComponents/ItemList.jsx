@@ -24,15 +24,18 @@ const ItemList = () => {
         const itemsCollection = collection(db, "cars");
 
         getDocs(itemsCollection).then((snapshot) => {
-            const docs = snapshot.docs.map((doc) => doc.data());
+            const docs = snapshot.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data(),
+            }));
             setProducts(docs);
         });
     }, []);
 
     const { dispatch } = useCart();
 
-    const onAddProduct = () => {
-        dispatch({ type: "ADD_TO_CART", payload: products });
+    const onAddProduct = (product) => {
+        dispatch({ type: "ADD_TO_CART", payload: product });
     };
 
     return (
@@ -60,7 +63,7 @@ const ItemList = () => {
                                 <Button
                                     variant="solid"
                                     colorScheme="blue"
-                                    onClick={onAddProduct}
+                                    onClick={() => onAddProduct(p)}
                                 >
                                     Agregar
                                 </Button>

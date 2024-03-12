@@ -15,17 +15,6 @@ const Collection = () => {
             setProducts(docs);
         });
     }, []);
-
-    return (
-        <div>
-            {products.map((p, index) => (
-                <div key={index}>
-                    <h2>{p.nombre}</h2>
-                    <h2>{p.precio}</h2>
-                </div>
-            ))}
-        </div>
-    );
 };
 
 export default Collection;
